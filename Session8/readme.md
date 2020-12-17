@@ -11,6 +11,7 @@
 
 ## Model
 
+```
 Seq2Seq(  
   (encoder): Encoder(  
     (embedding): Embedding(5893, 256)  
@@ -24,9 +25,11 @@ Seq2Seq(
     (dropout): Dropout(p=0.5, inplace=False)  
   )  
 )  
+```
 
 ## Training Log
 
+```
 Epoch: 01 | Time: 0m 52s  
 	Train Loss: 5.231 | Train PPL: 186.910  
 	 Val. Loss: 4.990 |  Val. PPL: 146.906  
@@ -87,6 +90,7 @@ Epoch: 19 | Time: 0m 52s
 Epoch: 20 | Time: 0m 52s  
 	Train Loss: 2.586 | Train PPL:  13.270  
 	 Val. Loss: 3.978 |  Val. PPL:  53.404  
+```
 
 ## Perplexity
 
