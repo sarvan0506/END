@@ -9,6 +9,8 @@
 
 # Part 1: Create a Seq2Seq model using a Encoder-Decoder Architecture to translate English to German
 
+Refer the notebook `Sequence to Sequence Learning with Neural Networks.ipynb`
+
 ## Model
 
 ```
