@@ -96,7 +96,7 @@ Epoch: 20 | Time: 0m 52s
 
 ## Perplexity
 
-![perplexity](assets/perplexity.png =400x400)
+<img src="assets/perplexity.png" width="400">
 
 
 # Part 2: Create 100 python programs with description and code.
