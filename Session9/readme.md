@@ -454,3 +454,4 @@ Epoch: 10 | Time: 1m 8s
 ```
 
 
+With this we are able to understand the Encoder-Decoder Architecture for Seq2Seq prediction problem and the importance of Attention to achieve better results.
