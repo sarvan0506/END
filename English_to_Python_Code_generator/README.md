@@ -11,12 +11,12 @@ Data is stored in a .py containing the Short Description of the python code comm
 First step is to seprate the short description from the python code. For that we have manually introduced "\n\n\n#" as an identifier to the start of the Short Description. The nextline from this short description will be counted as python code. This is done intentionally to not take comments in the python code for the short description.
 
 ### Sample short description
-`
+```
 fibonacci series up to 100
-`
+```
 
 ### Sample python code
-`
+```
 n   =   100 
 result   =    [   ] 
 a ,   b   =   0   ,   1 
@@ -25,13 +25,13 @@ result . append (   b )
 a ,   b   =   b ,   a   +   b 
 final   =   result 
 print ( f"Fibonacci series up to 100 :   { final } " )
-`
+```
 
 ## 2. Reducing the token counts
 
 When we apply tokenizer on this datset we get around 14000 unique tokens approximately for the dataset. Which is unlikely and the reason for this number is because of the inconsistancy with the syntax i.e. "print(", "print( ", "print (" will be taken as 3 different token. This is just an example there as lot of such issues with the dataset which we have cleaned manually as per the pointers followed
 
-`
+```
   code = code.replace("(", " ( ")
   code = code.replace("[", " [ ")
   code = code.replace(":", " : ")
@@ -83,7 +83,7 @@ When we apply tokenizer on this datset we get around 14000 unique tokens approxi
   code = code.replace("& &", "&&")
   # ~
   code = code.replace("~", " ~ ")
-`
+```
 
 This process has hugely reduced our token count from 15k to 5k approximately.
 
@@ -164,7 +164,7 @@ The tokens are looking good now let us start model building
 
 Here are we are using the Transformer model as mentioned earlier.
 
-`
+```
 Seq2Seq(
   (encoder): Encoder(
     (tok_embedding): Embedding(1571, 512)
@@ -308,13 +308,13 @@ Seq2Seq(
     (dropout): Dropout(p=0.2, inplace=False)
   )
 )
-`
+```
 
 # Loss Function
 
 We are using CrossEntropy loss as loss function and PPL as the evaluation metrics. Please look into the training logs trained for 50 epochs below,
 
-`
+```
 Epoch: 01 | Time: 0m 15s
 	Train Loss: 0.024 | Train PPL:   1.024
 	 Val. Loss: 0.085 |  Val. PPL:   1.089
@@ -465,7 +465,7 @@ Epoch: 49 | Time: 0m 15s
 Epoch: 50 | Time: 0m 15s
 	Train Loss: 0.001 | Train PPL:   1.001
 	 Val. Loss: 0.011 |  Val. PPL:   1.011
-`
+```
 
 
 # Sample Outputs:
@@ -474,36 +474,36 @@ Epoch: 50 | Time: 0m 15s
 
 ### actual
 
-`
+```
 def derivative_exp ( x : float )    -   >   float : 
     import math 
     return math.exp ( x )
-`
+```
 
 ### predicted trg 
 
-`
+```
 def derivative_exp ( x : float )    -   >   float : 
     import math 
     return math.exp ( x ) <eos>
-`
+```
 
 ## 2.   write a python function that takes in a list and returns a list containing the squares of the elements of the input list
 
 
 ### actual
 
-`
+```
 def square_list_elements ( list_to_be_squared )   : 
     return list ( map ( lambda x :   x *   * 2 ,   list_to_be_squared )   )
-`
+```
 
 ### predicted trg
 
-`
+```
 def square_list_elements ( list_to_be_squared )   : 
     return list (   map ( lambda x :   x *   * 2 ,   list_to_be_squared )    ) <eos>
-`
+```
 
 The model tends to perform very well in case of relatively smaller programs and more frequent/common programs. And the model struggles to generate complex programs such as "copy the contents of one file into another", "multiply two matrices using nested list comprehension", etc.
 
